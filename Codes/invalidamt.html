@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM BANKING</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="outer-box">
+        <div id="inside-camera"></div>
+        <div id="camera"></div>
+        <div id="indicator"></div>
+        <div id="inner-box">
+            <div id="invalid-amt" style="display: none;"><p>Please Enter valid amount<br><br>
+            </p></div>
+
+           
+
+        </div>
+        <div id="outer-box2">
+
+            <div id="cash"></div>
+            <p id="collectcash">Collect your cash here</p>
+
+            <div id="credit">
+                <div id="inner-cred">
+                    <div id="credit-card"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    invalid_amt=document.getElementById("invalid-amt");
+    
+    function handlewithdrawl(){
+        invalid_amt.style.display="block";
+        setTimeout(function(){
+            invalid_amt.style.display="none";
+            window.location.href='operationscreen.html';
+        },5000);
+
+
+    }
+handlewithdrawl();
+</script>
+</body>
+
+</html>

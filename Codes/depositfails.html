@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM BANKING</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="outer-box">
+        <div id="inside-camera"></div>
+        <div id="camera"></div>
+        <div id="indicator"></div>
+        <div id="inner-box">
+            <div id="transaction-loading" style="display: none;">
+                <p>transaction loading,Please wait...<br><br> Don't Exit while transaction and <br><br> don't remove your card</p>
+            </div>
+
+            <div id="deposit-fails" style="display: none;">
+                <p>Deposit fails<br><br> Please try again later
+
+
+                </p>
+            </div>
+
+
+        </div>
+        <div id="outer-box2">
+
+            <div id="cash"></div>
+            <p id="collectcash">Collect your cash here</p>
+
+            <div id="credit">
+                <div id="inner-cred">
+                    <div id="credit-card"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        transaction_load = document.getElementById("transaction-loading");
+        deposit_fails = document.getElementById("deposit-fails");
+
+        function handlewithdrawl() {
+            transaction_load.style.display = "block";
+            setTimeout(function() {
+                transaction_load.style.display = "none";
+                deposit_fails.style.display = "block";
+                setTimeout(function() {
+                    deposit_fails.style.display = "none";
+                    window.location.href = 'operationscreen.html';
+                }, 5000);
+
+            }, 2000);
+
+
+        }
+        handlewithdrawl();
+    </script>
+</body>
+
+</html>

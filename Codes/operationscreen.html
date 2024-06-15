@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM BANKING</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="outer-box">
+        <div id="inside-camera"></div>
+        <div id="camera"></div>
+        <div id="indicator"></div>
+        <div id="inner-box">
+
+
+
+
+            <!-- Choosing Operations -->
+
+            <div id="transaction-screen" style="display:block;">
+                <p id="welcome-msg">Welcome user<br><br>Choose an option to perform</p>
+
+                <div id="transaction-flex">
+                    <button id="transaction-btn">Transaction Management</button>
+                    <button id="loan-btn">Loan Management</button>
+                    <button id="access-btn">Access Control</button>
+
+                </div>
+                <div id="fast-cash"> <button id="fast-cash-btn">Fast Cash</button></div>
+
+                <div id="logout-div">
+                    <button id="logout-btn" onclick="logout()">Log Out</button>
+                </div>
+
+            </div>
+
+            <!-- After clicking Transaction management -->
+
+            <div id="transaction-mng" style="display: none;">
+                <div id="transaction-mng-flex">
+                    <button id="withdrawl-btn">Withdrawal</button>
+                    <button id="deposit-btn">Deposit</button>
+                    <form action="checkbalance.php">
+                        <button type="submit" id="check-balance">Remaining balance</button>
+                    </form>
+                    <button id="fund-transfer-btn">Money Transfer</button>
+
+                </div>
+
+            </div>
+
+            <div id="fast-cash-items" style="display: none;">
+                <div id="fast-cash-flex">
+                    <form action="fast_cash_100.php" method="post">
+                        <button type="submit" value="100" name="fast-amt" id="100inr">100</button>
+                        <button type="submit" value="200" id="200inr" name="fast-amt">200</button>
+                        <button type="submit" value="500" id="500inr" name="fast-amt">500</button>
+                    </form>
+                </div>
+
+
+            </div>
+
+            <!--After Clicking Loan Management-->
+            <div id="loan-screen" style="display: none;">
+                <!-- <p id="loan-msg">Choose Loan operation</p>-->
+                <div id="loan-flex">
+                    <button id="loan-button">personal loan</button>
+
+                </div>
+            </div>
+
+            <!-- Contains Req Loan and Pay loan button-->
+            <div id="req-pay" style="display: none;">
+                <div id="loan-flex">
+                    <button id="reqloan">Request for loan</button>
+                    <button id="payloan">Pay Loan</button>
+                    <button id="remaining-loan">Remaining balance of loan</button>
+
+                </div>
+
+            </div>
+
+            <!--Access btn element-->
+            <div id="access-mng" style="display:none;">
+                <div id="access-mng-flex">
+                    <button id="change-pin-btn">Change pin</button>
+                    <form action="transactiontable.php">
+                        <button type="submit" id="transaction-history">Transaction history</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!--Fund transfer-->
+
+            <div id="fund-send" style="display: none;">
+                <form action="process_transfer.php" method="post">
+                    <div id="fund-send-flex">
+                        <label class="fs">Enter Recipient ID Number</label>
+                        <input type="text" required name="recipient"> <br>
+                        <label class="fn">Enter Recipient Account Number</label>
+                        <input type="text" required name="rec_acc_num"> <br>
+                        <label class="fs2">Enter Amount to Send</label>
+                        <input type="number" min="0" required max="25000" step="100" class="fs2" name="amount">
+
+                        <button type="submit">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <!--Withdrawl input-->
+
+            <div id="withdrawl-money" style="display: none;">
+                <form action="withdrawlinput.php" method="post">
+                    <div id="withdrawl-money-flex">
+                        <label for="wd">Enter Amount to withdrawl</label>
+                        <input type="text" name="withdrawl-input" id="wd">
+                        <button>Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            <!--Deposit Input-->
+            <div id="deposit-money" style="display: none;">
+                <form action="depositinput.php" method="post">
+                    <div id="deposit-money-flex">
+                        <label for="dp">Enter Amount to Deposit</label>
+                        <input type="text" name="deposit-input" id="dp">
+                        <button>Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Input to change pin -->
+
+            <div id="change-pin-form" style="display: none;">
+                <form action="idvalidate.php" method="post">
+                    <div id="change-pin-flex">
+                        <label for="cp">Enter Your Special ID </label>
+                        <input type="text" required name="special-id" id="dp">
+
+                        <label for="acc">Enter Your Account Number </label>
+                        <input type="text" required name="acc_num" id="acc">
+                        <button>Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            <!--Request Loan form-->
+            <div id="loan-req-form" style="display: none;">
+                <form action="loanvalidation1.php" method="post">
+                    <div id="loan-req-flex">
+                        <label for="name-req-loan">Enter Your Name: </label>
+                        <input type="text" name="user-name-req" value="vicky" maxlength="20" required id="name-req-loan">
+                        <label for="mobile-num">Enter Your Mobile Number</label>
+                        <input type="text" name="user-mobile-num" maxlength="15" minlength="10" value="1234567890" required id="mobile-num">
+                        <label for="age-loan">Enter Your DOB :</label>
+                        <input type="date" name="loan-req-age" required id="age-loan">
+                        <label for="salary-req">Enter your Salary :</label>
+                        <input type="number" placeholder="Min Salary was 15000" min="15000" required name="salary-loan" id="salary-req">
+                        <label for="pan">Enter your PAN Number :</label>
+                        <input type="text" placeholder=" Eg : AFZPK7190K" minlength="10" maxlength="10" id="pan" required name="pan-loan">
+                        <button type="submit" name="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Pay Loan -->
+
+
+
+
+
+            <button id="back" onclick="goback()" style="display: none;">Go Back</button>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div id="outer-box2">
+
+            <div id="cash"></div>
+            <p id="collectcash">Collect your cash here</p>
+
+            <div id="credit">
+                <div id="inner-cred">
+                    <div id="credit-card"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* First screen button*/
+        let transaction_screen = document.getElementById("transaction-screen");
+
+        /* Operation buttons (Transaction , Loan , Access control)        */
+
+        let transaction_btn = document.getElementById("transaction-btn");
+        let loan_btn = document.getElementById("loan-btn");
+        let access_btn = document.getElementById("access-btn");
+
+        /*  Transaction buttons */
+        let transaction_mng = document.getElementById("transaction-mng");
+
+        /* Withdrawl , deposit etc.. */
+        let withdrawl_btn = document.getElementById("withdrawl-btn");
+        let deposit_btn = document.getElementById("deposit-btn");
+        let checkbalance_btn = document.getElementById("check-balance");
+        let history_btn = document.getElementById("transaction-history");
+
+
+        /*Access control buttons*/
+        let access_screen = document.getElementById("access-mng");
+        let change_pin_button = document.getElementById("change-pin-btn");
+        let change_pin_form = document.getElementById("change-pin-form");
+        /*Withdrawl money*/
+        let withdrawl_money = document.getElementById("withdrawl-money");
+
+        /*deposit money*/
+        let deposit_money = document.getElementById("deposit-money");
+
+        /*fast cash*/
+        let fast_cash_btn = document.getElementById("fast-cash-btn");
+        let fast_cash_items = document.getElementById("fast-cash-items");
+
+
+        /*Loan buttons*/
+        let loan_screen = document.getElementById("loan-screen");
+        let req_pay = document.getElementById("req-pay");
+        let payloan_btn = document.getElementById("payloan");
+        let req_loan_btn = document.getElementById("reqloan");
+        let loan_button = document.getElementById("loan-button");
+        /*Request Loan */
+        let loan_req_form = document.getElementById("loan-req-form");
+        /*Pay loan*/
+
+        let payloan_form = document.getElementById("pay-loan-form");
+
+        /* Remaining loan*/
+        var remaining_loan_btn = document.getElementById("remaining-loan");
+
+        /* Fund send btn */
+        let fund_transfer_btn = document.getElementById("fund-transfer-btn");
+        let fund_send_btn = document.getElementById("fund-send");
+
+
+        /* Back button */
+
+        let back_btn = document.getElementById("back");
+
+        /* Log out button*/
+        let logout_btn = document.getElementById("logout-btn");
+
+        /*After clicking transaction btn and displaying transaction operations*/
+
+        transaction_btn.addEventListener("click", function() {
+            transaction_mng.style.display = "block";
+            back_btn.style.display = "block";
+            transaction_screen.style.display = "none";
+
+        })
+
+        /* After clicking fund send */
+        fund_transfer_btn.addEventListener("click", function() {
+            back_btn.style.display = "block";
+            fund_send_btn.style.display = "block";
+            transaction_mng.style.display = "none";
+
+
+        })
+
+        /*After clcicking fast cash*/
+
+        fast_cash_btn.addEventListener("click", function() {
+            transaction_screen.style.display = "none";
+            fast_cash_items.style.display = "block";
+            back_btn.style.display = "block";
+
+        })
+
+
+        /* After clicking loan button and displaying loan buttons*/
+        loan_btn.addEventListener("click", function() {
+            transaction_screen.style.display = "none";
+            loan_screen.style.display = "block";
+            back_btn.style.display = "block";
+        })
+
+        /*After clicking Loan and displays Req and Pay*/
+        loan_button.addEventListener("click", function() {
+            loan_screen.style.display = "none";
+            req_pay.style.display = "block";
+            back_btn.style.display = "block";
+        })
+
+        /* After clciking access control*/
+        access_btn.addEventListener("click", function() {
+            access_screen.style.display = "block";
+            transaction_screen.style.display = "none";
+            back_btn.style.display = "block";
+        })
+
+        /*Displaying withdrawl input*/
+        withdrawl_btn.addEventListener("click", function() {
+            transaction_mng.style.display = "none";
+            withdrawl_money.style.display = "block";
+            back_btn.style.display = "block";
+
+        })
+
+        /*Displaying Deposit input*/
+        deposit_btn.addEventListener("click", function() {
+            transaction_mng.style.display = "none";
+            deposit_money.style.display = "block";
+            back_btn.style.display = "block";
+
+        })
+
+        /* Display input from user to change PIN*/
+        change_pin_button.addEventListener("click", function() {
+                access_screen.style.display = "none";
+                change_pin_form.style.display = "block";
+                back_btn.style.display = "block";
+
+
+            })
+            /* Display loan req form*/
+        req_loan_btn.addEventListener("click", function() {
+            req_pay.style.display = "none";
+            loan_req_form.style.display = "block";
+            back_btn.style.display = "block";
+
+        })
+
+        /* display pay loan form */
+        payloan_btn.addEventListener("click", function() {
+            window.location.href = "persondetails.html";
+
+        })
+
+        /*After clickingremaining loan*/
+        remaining_loan_btn.addEventListener("click", function() {
+            window.location.href = "remainingloanform.html";
+        })
+
+
+        /*Logout function*/
+        function logout() {
+
+
+            var confirmlogout = confirm("Are you sure that you want to logout");
+            if (confirmlogout) {
+                window.location.href = "home.html";
+            } else {
+                //nothing
+            }
+
+        }
+
+
+
+        /*Back button function*/
+        function goback() {
+            if (transaction_mng.style.display === "block") {
+                transaction_mng.style.display = "none";
+                transaction_screen.style.display = "block";
+                back_btn.style.display = "none";
+            } else if (withdrawl_money.style.display === "block" || deposit_money.style.display === "block") {
+                withdrawl_money.style.display = "none";
+                deposit_money.style.display = "none";
+                transaction_mng.style.display = "block";
+            } else if (req_pay.style.display === "block") {
+                req_pay.style.display = "none";
+                loan_screen.style.display = "block";
+            } else if (loan_screen.style.display === "block") {
+                loan_screen.style.display = "none";
+                transaction_screen.style.display = "block";
+                back_btn.style.display = "none";
+            } else if (loan_req_form.style.display === "block") {
+                loan_req_form.style.display = "none";
+                req_pay.style.display = "block";
+
+            } else if (access_screen.style.display === "block") {
+                access_screen.style.display = "none";
+                transaction_screen.style.display = "block";
+                back_btn.style.display = "none";
+            } else if (change_pin_form.style.display === "block") {
+                change_pin_form.style.display = "none";
+                access_screen.style.display = "block";
+            } else if (fast_cash_items.style.display === "block") {
+                transaction_screen.style.display = "block";
+                fast_cash_items.style.display = "none";
+                back_btn.style.display = "none";
+            } else if (fund_send_btn.style.display === "block") {
+                fund_send_btn.style.display = "none";
+                transaction_mng.style.display = "block";
+
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>
