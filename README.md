@@ -1,6 +1,8 @@
 ATM-MANAGEMENT
 
 This project was done by using Frond-End Tools like HTML , CSS and Javascript ,Backend was PHP and Database was MySQL 
+If you want to see the frontend , Type "Codes/home.html" with your existing URL
+Link : https://vickynot-10.github.io/ATM-Management/Codes/home.html
 
 How to run this Project :
 
